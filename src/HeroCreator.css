@@ -1,0 +1,31 @@
+div {
+  text-align: center;
+}
+
+form {
+  display: table;
+  width: 50%;
+  margin: 0 auto;
+  table-layout: auto;
+}
+
+th {
+  text-align: left;
+}
+
+p {
+  display: table-row;
+}
+
+label {
+  text-align: right;
+  display: table-cell;
+}
+
+.tCell {
+  display: table-cell;
+}
+
+.center {
+  text-align: center;
+}
