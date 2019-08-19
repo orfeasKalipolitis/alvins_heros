@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './HeroCreator.css';
+var FileSaver = require('file-saver');
 
 class HeroCreator extends Component {
   constructor(props) {
@@ -14,8 +15,16 @@ class HeroCreator extends Component {
       heroBasicAttack: 0
     };
 
+    // bind all the this to all the methods
     this.handleInputChange = this.handleInputChange.bind(this);
     this.validateHero = this.validateHero.bind(this);
+    this.exportJSON = this.exportJSON.bind(this);
+  }
+
+  exportJSON() {
+    let jsonData = JSON.stringify(this.state);
+    var blob = new Blob([jsonData], {type: 'text/plain;charset=utf-8'})
+    FileSaver.saveAs(blob, 'hero-'+ this.state.heroName +'.json')
   }
 
   handleInputChange(event) {
@@ -30,6 +39,7 @@ class HeroCreator extends Component {
 
   validateHero(e) {
     e.preventDefault();
+    this.exportJSON();
     // TODO: Add some validation
   }
 
